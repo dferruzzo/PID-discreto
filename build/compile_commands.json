@@ -1,14 +1,12 @@
 [
 {
-  "directory": "/Users/dferruzzo/PID-discreto/build",
-  "command": "/usr/bin/clang++ -I/Users/dferruzzo/PID-discreto/include -I/Users/dferruzzo/PID-discreto/src  -Wall -Wextra -g -g -O0 -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.7 -o CMakeFiles/pid-discreto.dir/src/main.cpp.o -c /Users/dferruzzo/PID-discreto/src/main.cpp",
-  "file": "/Users/dferruzzo/PID-discreto/src/main.cpp",
-  "output": "CMakeFiles/pid-discreto.dir/src/main.cpp.o"
+  "directory": "/workspaces/PID-discreto/build",
+  "command": "/usr/bin/clang++   -I/workspaces/PID-discreto/include -I/workspaces/PID-discreto/src   -Wall -Wextra -g -g -O0   -std=gnu++17 -o CMakeFiles/pid-discreto.dir/src/main.cpp.o -c /workspaces/PID-discreto/src/main.cpp",
+  "file": "/workspaces/PID-discreto/src/main.cpp"
 },
 {
-  "directory": "/Users/dferruzzo/PID-discreto/build",
-  "command": "/usr/bin/clang++ -I/Users/dferruzzo/PID-discreto/include -I/Users/dferruzzo/PID-discreto/src  -Wall -Wextra -g -g -O0 -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.7 -o CMakeFiles/pid-discreto.dir/src/utils/PID.cpp.o -c /Users/dferruzzo/PID-discreto/src/utils/PID.cpp",
-  "file": "/Users/dferruzzo/PID-discreto/src/utils/PID.cpp",
-  "output": "CMakeFiles/pid-discreto.dir/src/utils/PID.cpp.o"
+  "directory": "/workspaces/PID-discreto/build",
+  "command": "/usr/bin/clang++   -I/workspaces/PID-discreto/include -I/workspaces/PID-discreto/src   -Wall -Wextra -g -g -O0   -std=gnu++17 -o CMakeFiles/pid-discreto.dir/src/utils/PID.cpp.o -c /workspaces/PID-discreto/src/utils/PID.cpp",
+  "file": "/workspaces/PID-discreto/src/utils/PID.cpp"
 }
 ]

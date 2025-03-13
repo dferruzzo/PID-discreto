@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -Wall -Wextra -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.7 -Wl,-search_paths_first -Wl,-headerpad_max_install_names "CMakeFiles/cpp-codespace-project.dir/src/main.cpp.o" "CMakeFiles/cpp-codespace-project.dir/src/utils/PID.cpp.o" -o cpp-codespace-project

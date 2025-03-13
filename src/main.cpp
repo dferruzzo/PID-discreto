@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cmath>  // Adicionado para a função exp()
 //#include "project/common.h"
 //#include "utils/helpers.h"
 #include "project/PID.h"
@@ -22,7 +23,7 @@ int main() {
     double kp = 2.0;    // Ganho proporcional
     double ki = 0.5;    // Ganho integral
     double kd = 0.1;    // Ganho derivativo
-    double sampleTime = 0.001;  // 10ms
+    double sampleTime = 0.001;  // 1ms
     
     // Criar controlador PID
     PID pid(kp, ki, kd, sampleTime, -100.0, 100.0);
@@ -31,10 +32,11 @@ int main() {
     // Parâmetros do sistema simulado
     double timeConstant = 0.5;  // Constante de tempo
     double gain = 1.0;          // Ganho do sistema
-    double systemOutput = 0.0;  // Estado inicial
+    double systemOutput = 0.0;  // Estado inicial do sistema
+    double lastOutput = 0.0;    // Variável para armazenar a última saída
     
     // Executar simulação por 5 segundos
-    const int steps = 5000;  // 5 segundos com sampleTime = 0.01s
+    const int steps = 5000;  // 5 segundos com sampleTime = 0.001s
     
     std::cout << "Tempo,Setpoint,Saída,ControlPID" << std::endl;
     
@@ -43,7 +45,7 @@ int main() {
         double controlSignal = pid.compute(systemOutput);
         
         // Aplicar ao sistema
-        systemOutput = simulateSystem(controlSignal, systemOutput, timeConstant, gain, sampleTime);
+        systemOutput = simulateSystem(controlSignal, lastOutput, timeConstant, gain, sampleTime);
         
         // Mostrar resultados a cada 10 passos
         if (i % 10 == 0) {

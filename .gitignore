@@ -1,0 +1,76 @@
+# Arquivos de compilação
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.dylib
+*.exe
+
+# Diretórios de compilação
+/bin/
+/build/
+/lib/
+/dist/
+/obj/
+/Debug/
+/Release/
+
+# Arquivos específicos do CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+Makefile
+*.cmake
+
+# Arquivos específicos de IDE e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.user
+*~
+.*.kate-swp
+
+# Arquivos de dependência
+/dependencies/
+/vendor/
+
+# Arquivos de projeto específicos
+/Testing/
+*.log
+*.tlog
+*.idb
+*.pdb
+
+# Arquivos gerados automaticamente
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+*.qm
+*.pro.user
+
+# Arquivos temporários
+temp/
+tmp/
+.tmp/
+*.tmp
+
+# Configurações do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de saída da simulação
+*.csv
+*.dat
+
+# Outros
+core.*
+*.stackdump
+*.app

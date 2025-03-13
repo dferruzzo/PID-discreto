@@ -1,1 +1,1 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -Wall -Wextra -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.7 -Wl,-search_paths_first -Wl,-headerpad_max_install_names "CMakeFiles/pid-discreto.dir/src/main.cpp.o" "CMakeFiles/pid-discreto.dir/src/utils/PID.cpp.o" -o pid-discreto
+/usr/bin/clang++   -Wall -Wextra -g -g -O0   CMakeFiles/pid-discreto.dir/src/main.cpp.o CMakeFiles/pid-discreto.dir/src/utils/PID.cpp.o  -o pid-discreto 
