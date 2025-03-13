@@ -1,0 +1,4 @@
+# ninja log v6
+4	1791	1741868247384392236	CMakeFiles/pid-discreto.dir/src/utils/PID.cpp.o	dc648cacfe91e87a
+2	2894	1741868247382536871	CMakeFiles/pid-discreto.dir/src/main.cpp.o	835231b1671ffe36
+2914	3126	1741868250294056756	pid-discreto	196e71881986adf7

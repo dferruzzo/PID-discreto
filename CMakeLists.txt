@@ -1,15 +1,21 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(cpp-codespace-project)
+project(pid-discreto)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
-include_directories(include)
+# Adicione flags de compilação específicas para build Debug/Release
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 
-file(GLOB SOURCES "src/*.cpp" "src/utils/*.cpp")
+include_directories(include src)
+
+file(GLOB SOURCES
+    "src/*.cpp" 
+    "src/utils/*.cpp"
+    "src/project/*.cpp"
+    )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
-
-enable_testing()
-add_subdirectory(tests)

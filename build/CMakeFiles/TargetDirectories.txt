@@ -1,0 +1,3 @@
+/Users/dferruzzo/PID-discreto/build/CMakeFiles/pid-discreto.dir
+/Users/dferruzzo/PID-discreto/build/CMakeFiles/edit_cache.dir
+/Users/dferruzzo/PID-discreto/build/CMakeFiles/rebuild_cache.dir
