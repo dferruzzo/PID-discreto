@@ -1,18 +1,49 @@
 {
-    "name": "C++ Codespace Project",
+    "name": "PID Discreto Codespace",
     "build": {
         "dockerfile": "Dockerfile",
         "context": ".."
     },
-    "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cmake-tools",
+                "twxs.cmake",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-toolsai.jupyter",
+                "eamodio.gitlens",
+                "github.copilot"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.rulers": [
+                    100
+                ],
+                "cmake.configureOnOpen": true,
+                "C_Cpp.default.cppStandard": "c++17",
+                "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+                "files.associations": {
+                    "*.h": "cpp"
+                },
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "python.defaultInterpreterPath": "/usr/bin/python3"
+            }
+        }
     },
-    "extensions": [
-        "ms-vscode.cpptools",
-        "ms-vscode.cmake-tools",
-        "ms-vscode.cmake-tools",
-        "ms-vscode.cmake-tools"
-    ],
-    "postCreateCommand": "cmake .. && make",
-    "remoteUser": "vscode"
+    "features": {
+        "git": "latest",
+        "github-cli": "latest"
+    },
+    "forwardPorts": [
+        8888
+    ], // Para Jupyter Notebook, se necessário
+    "remoteUser": "vscode",
+    "postCreateCommand": "apt-get update && apt-get install -y python3-pip python3-matplotlib python3-pandas && mkdir -p build && cd build && cmake .. && make",
+    "hostRequirements": {
+        "cpus": 2,
+        "memory": "4gb",
+        "storage": "8gb"
+    }
 }
