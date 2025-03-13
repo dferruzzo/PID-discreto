@@ -112,6 +112,12 @@ O script Python `plots.py` gera gráficos com os resultados da simulação:
 - Saída do sistema (resposta)
 - Sinal de controle (ação do PID)
 
+### Exemplo de Resposta
+
+![Resposta do PID](src/utils/resposta_pid.png)
+
+*Figura 1: Exemplo de resposta do sistema controlado por PID.*
+
 ## Licença
 
 [MIT License](https://opensource.org/licenses/MIT)
