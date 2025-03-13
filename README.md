@@ -1,69 +1,126 @@
-# C++ Codespace Project
+# Controlador PID Discreto
 
-Este projeto é uma aplicação C++ que demonstra a estrutura básica de um projeto utilizando CMake, com suporte a testes unitários e um ambiente de desenvolvimento configurado para Codespaces.
+Este projeto implementa um controlador PID (Proporcional-Integral-Derivativo) discreto em C++ e demonstra seu uso em um sistema de primeira ordem simulado.
+
+## Descrição
+
+O controlador PID é um mecanismo de controle amplamente utilizado em sistemas industriais e aplicações que exigem controle contínuo e automatizado. Este projeto fornece uma implementação completa e flexível de um controlador PID discreto para ser usado em sistemas em tempo real.
+
+Características principais:
+- Implementação completa em C++ de um controlador PID discreto
+- Ajustes independentes dos ganhos proporcional, integral e derivativo
+- Anti-windup para evitar saturação do termo integral
+- Limites de saída configuráveis
+- Tempo de amostragem ajustável
+- Cálculo do termo derivativo baseado na medida (não no erro) para reduzir spikes
+
+## Requisitos
+
+- Compilador C++ com suporte ao padrão C++17
+- CMake versão 3.10 ou superior
+- Python 3 com as bibliotecas matplotlib e pandas (para visualização dos resultados)
 
 ## Estrutura do Projeto
 
 ```
-cpp-codespace-project
-├── src
-│   ├── main.cpp          # Ponto de entrada da aplicação
-│   └── utils
-│       ├── helpers.cpp   # Implementação de funções auxiliares
-│       └── helpers.h     # Declarações das funções auxiliares
-├── include
-│   └── project
-│       └── common.h      # Definições comuns e declarações
-├── tests
-│   └── test_main.cpp     # Testes unitários para o projeto
-├── CMakeLists.txt        # Script de configuração do CMake
-├── .devcontainer
-│   ├── devcontainer.json  # Configuração do ambiente de desenvolvimento
-│   └── Dockerfile         # Definição da imagem Docker
-├── .vscode
-│   ├── launch.json        # Configurações de depuração
-│   ├── tasks.json         # Definições de tarefas
-│   └── settings.json      # Configurações específicas do projeto
-├── .gitignore             # Arquivos a serem ignorados pelo controle de versão
-└── README.md              # Documentação do projeto
+PID-discreto/
+├── include/                # Arquivos de cabeçalho
+│   └── project/
+│       └── PID.h           # Classe PID
+├── src/
+│   ├── main.cpp            # Programa principal de demonstração
+│   └── project/
+│       └── PID.cpp         # Implementação da classe PID
+│   └── utils/
+│       └── plots.py        # Script para visualização de resultados
+├── CMakeLists.txt          # Configuração do CMake
+└── README.md               # Este arquivo
 ```
 
-## Instalação
+## Compilação e Execução
 
-1. Clone o repositório:
-   ```
-   git clone <URL_DO_REPOSITORIO>
-   cd cpp-codespace-project
-   ```
+### Compilar o projeto
 
-2. Abra o projeto em um Codespace ou em seu ambiente de desenvolvimento local.
+```bash
+# Criar e entrar no diretório build
+mkdir -p build
+cd build
 
-3. Compile o projeto utilizando CMake:
-   ```
-   mkdir build
-   cd build
-   cmake ..
-   make
-   ```
-
-## Uso
-
-Após a compilação, você pode executar a aplicação gerada:
-```
-./nome_do_executavel
+# Configurar e compilar
+cmake ..
+make
 ```
 
-## Testes
+### Executar a simulação
 
-Para executar os testes unitários, você pode usar o seguinte comando no diretório `build`:
+```bash
+# Na pasta build
+./pid-discreto > resultados.csv
 ```
-make test
+
+### Visualizar os resultados
+
+```bash
+# Na pasta raiz do projeto
+python3 src/utils/plots.py build/resultados.csv
 ```
 
-## Contribuição
+## Exemplo de Uso
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests. Certifique-se de seguir as diretrizes de contribuição.
+```cpp
+#include "project/PID.h"
+
+// Criar controlador PID com ganhos configurados
+// Argumentos: kp, ki, kd, tempo de amostragem, saída mínima, saída máxima
+PID pid(2.0, 0.5, 0.1, 0.01, -100.0, 100.0);
+
+// Definir o setpoint (valor desejado)
+pid.setSetpoint(50.0);
+
+// Computar a ação de controle baseada na medição atual
+double measurement = getSensorValue();
+double controlSignal = pid.compute(measurement);
+```
+
+## Ajuste dos Parâmetros PID
+
+Os parâmetros PID (kp, ki, kd) podem precisar de ajustes para cada aplicação específica:
+
+- **kp** (ganho proporcional): Controla a resposta imediata ao erro. Valores maiores levam a uma resposta mais rápida, mas podem causar instabilidade.
+  
+- **ki** (ganho integral): Elimina o erro em regime permanente. Valores maiores eliminam o erro mais rapidamente, mas podem causar oscilações.
+  
+- **kd** (ganho derivativo): Melhora a estabilidade e reduz oscilações. Valores maiores aumentam o amortecimento, mas podem amplificar ruídos.
+
+## Simulação do Sistema
+
+O projeto inclui uma função de simulação para um sistema de primeira ordem, permitindo testar o controlador PID:
+
+```cpp
+double simulateSystem(double input, double& lastOutput, double timeConstant, double gain, double sampleTime);
+```
+
+Parâmetros do sistema:
+- **timeConstant**: Constante de tempo do sistema (valores maiores resultam em respostas mais lentas)
+- **gain**: Ganho estático do sistema
+- **sampleTime**: Tempo de amostragem em segundos
+
+## Visualização dos Resultados
+
+O script Python `plots.py` gera gráficos com os resultados da simulação:
+- Setpoint (valor desejado)
+- Saída do sistema (resposta)
+- Sinal de controle (ação do PID)
 
 ## Licença
 
-Este projeto está licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.
+[MIT License](https://opensource.org/licenses/MIT)
+
+## Autor
+
+Diego Ferruzzo
+
+## Referências
+
+- Åström, K.J. e Hägglund, T. "PID Controllers: Theory, Design, and Tuning"
+- Phillips, C.L. e Harbor, R.D. "Feedback Control Systems"
