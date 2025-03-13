@@ -1,0 +1,13 @@
+{
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/include/**",
+        "${workspaceFolder}/src/**"
+    ],
+    "C_Cpp.default.defines": [],
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.formatting": "clangFormat",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    }
+}
